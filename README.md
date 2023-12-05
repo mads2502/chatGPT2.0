@@ -35,3 +35,6 @@ Steps to run the app in local
 
 **API:** OpenAI
 
+##Demo
+<img width="957" alt="image" src="https://github.com/mads2502/chatGPT2.0/assets/72691224/4718315d-1b58-430d-8873-8f863beb9c23">
+
