@@ -99,6 +99,20 @@ html {
   pointer-events: none;
 }
 
+.sidemenu-select-model{
+width: 100%;
+margin-top: 20px;
+border-radius: 5px;
+background-color:#011014;
+color:white;
+padding: 10px
+
+}
+.sidemenu-select-model:hover{
+
+  background-color:#282c34;
+  
+  }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

@@ -15,20 +15,33 @@ const openai = new OpenAI({
   const app=express();
   app.use(bodyParser.json())
   app.use(cors({
-    origin: ['http://localhost:3000']
+    origin: ['http://localhost:3000','http://localhost:3000/models']
 }));
+//Chat completion API
   app.post("/",async (req,res)=>{
-    const {message}=req.body.message;
-    console.log(message,"prompt")
+    console.log(req.body.messages,req.body.model)
     const response = await openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
-        messages: {message},
+        model: req.body.model,
+        messages: req.body.messages,
         max_tokens: 100,
       temperature: 0.7,
     });
       res.json({
-        data:response.choices[0].text}
+        data:response}
       )
     
+  });
+
+  //ChatGPT models API
+
+  app.get("/models",async (req,res)=>{
+    const list = await openai.models.list();
+
+    for await (const model of list) {
+      console.log(model,"Mads");
+    }
+    res.json({
+      data: list
+    })
   });
   app.listen(process.env.PORT,()=>{console.log("Listening on port "+`${process.env.PORT}`)});
